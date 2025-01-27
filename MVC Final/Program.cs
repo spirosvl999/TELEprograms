@@ -1,7 +1,15 @@
+using Microsoft.EntityFrameworkCore;
+using MVC_Final.Models;
+using System;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+// My DI for EF
+builder.Services.AddDbContext<LabDBContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
 
