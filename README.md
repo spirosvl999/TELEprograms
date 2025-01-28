@@ -7,6 +7,7 @@ This is a MVC university project, named "TELEprograms". In this project, we have
 - C#
 - ASP.NET
 - CSS
+- JavaScript
 - SQL
 
 ## Extensions Used:
@@ -14,7 +15,7 @@ This is a MVC university project, named "TELEprograms". In this project, we have
 - Microsoft.EntityFrameworkCore.SqlServer
 - Microsoft.EntityFramework.Tools
 
-## Used:
+## Enviroments Used:
 
 - Visual Studio
 - SQL Server Management Studio
@@ -22,3 +23,6 @@ This is a MVC university project, named "TELEprograms". In this project, we have
 ## Authors
 
 - [Vlachos Spiridon](https://github.com/spirosvl999)
+
+## Last Updated
+This project was last updated on [1/28/2025].
