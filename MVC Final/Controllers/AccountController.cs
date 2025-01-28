@@ -16,7 +16,7 @@ namespace MVC_Final.Controllers
         private readonly LabDBContext _context; // Declare _context
         
 
-        // Inject your AppDbContext directly
+        // Inject your LabDbContext directly
         public AccountController(LabDBContext context)
         {
             _context = context;
@@ -52,8 +52,11 @@ namespace MVC_Final.Controllers
 
                 return RedirectToAction("Index", "Home");
             }
-
-            ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+            else
+            {
+                // Add error message to ModelState or directly use ViewBag
+                ViewBag.ErrorMessage = "Invalid login attempt. Please try again.";
+            }
             return View(model);
         }
 
@@ -63,7 +66,7 @@ namespace MVC_Final.Controllers
         public IActionResult Logout()
         {
             HttpContext.Session.Clear();  // Clear the session
-            return RedirectToAction("Index", "Home");
+            return View();
         }
     }
 }
