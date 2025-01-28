@@ -2,18 +2,27 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using MVC_Final.Data;
 using MVC_Final.Models;
 using MVC_Final.ViewModels;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Http;
+using System.Threading.Tasks;
+
 
 namespace MVC_Final.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly SignInManager<User> _signInManager;
         private readonly LabDBContext _context; // Declare _context
+        
 
-       
+        // Inject your AppDbContext directly
+        public AccountController(LabDBContext context)
+        {
+            _context = context;
+        }
+
         // Login GET action
         [HttpGet]
         public IActionResult Login()
@@ -21,7 +30,7 @@ namespace MVC_Final.Controllers
             return View();
         }
 
-        // Login POST action
+        // Login POST action to authenticate the user
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginViewModel model)
@@ -31,36 +40,30 @@ namespace MVC_Final.Controllers
                 return View(model);
             }
 
-            // Retrieve the user from the custom User table based on the Username
+            // Search for the user in the database by username
             var user = await _context.Users
-                                      .FirstOrDefaultAsync(u => u.Username == model.Username);
+                .FirstOrDefaultAsync(u => u.Username == model.Username);
 
-            // If user is not found or password doesn't match (remember passwords are stored in plain text in your model)
-            if (user == null || user.Password != model.Password)
+            // If user is found and passwords match (NOTE: In production, always hash passwords!)
+            if (user != null && user.Password == model.Password)
             {
-                // If login fails, add error to ModelState and return the login view
-                ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-                return View(model);
-            }
+                // Log the user in (simple example, not secure for production!)
+                // For production, consider using cookies or JWT for authentication
+                HttpContext.Session.SetInt32("UserId", user.UserId);  // Store user ID in session
 
-            // Use SignInManager's PasswordSignInAsync method to sign in the user
-            var result = await _signInManager.PasswordSignInAsync(user, model.Password, model.RememberMe, false);
-
-            if (result.Succeeded)
-            {
-                return RedirectToAction("Index", "Home"); // Redirect to home page on successful login
+                return RedirectToAction("Index", "Home");
             }
 
             ModelState.AddModelError(string.Empty, "Invalid login attempt.");
             return View(model);
         }
 
-        // Logout action
+        // Logout action to clear the session
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Logout()
+        public IActionResult Logout()
         {
-            await _signInManager.SignOutAsync();
+            HttpContext.Session.Clear();  // Clear the session
             return RedirectToAction("Index", "Home");
         }
     }
