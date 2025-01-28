@@ -12,4 +12,4 @@ Microsoft.EntityFramework.Tools
 
 ## Authors
 
-- [Vlachos Spiridon](https://github.com/geo-di)
+- [Vlachos Spiridon](https://github.com/spirosvl999)
