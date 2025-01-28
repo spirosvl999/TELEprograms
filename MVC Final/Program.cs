@@ -13,10 +13,6 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<LabDBContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.AddIdentityCore<User>()
-    .AddEntityFrameworkStores<LabDBContext>()
-    .AddDefaultTokenProviders();
-
 
 var app = builder.Build();
 

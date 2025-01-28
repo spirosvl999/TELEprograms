@@ -11,18 +11,9 @@ namespace MVC_Final.Controllers
     public class AccountController : Controller
     {
         private readonly SignInManager<User> _signInManager;
-        private readonly UserManager<User> _userManager;
         private readonly LabDBContext _context; // Declare _context
 
-        public AccountController(SignInManager<User> signInManager,
-                              UserManager<User> userManager,
-                              LabDBContext context) // Inject DbContext here
-        {
-            _signInManager = signInManager;
-            _userManager = userManager;
-            _context = context; // Initialize _context
-        }
-
+       
         // Login GET action
         [HttpGet]
         public IActionResult Login()
