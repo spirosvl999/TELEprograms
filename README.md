@@ -15,7 +15,7 @@ This is a MVC university project, named "TELEprograms". In this project, we have
 - Microsoft.EntityFrameworkCore.SqlServer
 - Microsoft.EntityFramework.Tools
 
-## Used:
+## Enviroments Used:
 
 - Visual Studio
 - SQL Server Management Studio
