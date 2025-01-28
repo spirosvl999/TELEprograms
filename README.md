@@ -4,10 +4,11 @@ This is a MVC university project, named "TELEprograms". In this project, we have
 
 ## Programming Languages
 
-We used C#, ASP.NET and CSS.
+Used C#, ASP.NET and CSS.
 
 ## Extensions Used:
-
+Microsoft.EntityFrameworkCore.SqlServer
+Microsoft.EntityFramework.Tools
 
 ## Authors
 
