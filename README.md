@@ -2,16 +2,22 @@
 
 This is a MVC university project, named "TELEprograms". In this project, we have 3 different types of users, Admin, Seller and Client. Admin can manage the whole thing, Sellers create programs for the Clients and also can manage their programms. Finally the Clients can check and pay their bills.
 
-## Programming Languages
+## Programming Languages & Tools:
 
-- C#,
+- C#
 - ASP.NET
-- CSS.
+- CSS
+- SQL
 
 ## Extensions Used:
  
 - Microsoft.EntityFrameworkCore.SqlServer
 - Microsoft.EntityFramework.Tools
+
+## Used:
+
+- Visual Studio
+- SQL Server Management Studio
 
 ## Authors
 
