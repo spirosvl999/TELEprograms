@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MVC_Final.Models;
 using System;
@@ -7,9 +8,15 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+
 // My DI for EF
 builder.Services.AddDbContext<LabDBContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddIdentityCore<User>()
+    .AddEntityFrameworkStores<LabDBContext>()
+    .AddDefaultTokenProviders();
+
 
 var app = builder.Build();
 
@@ -26,6 +33,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication(); // This is needed for Identity to work
 app.UseAuthorization();
 
 app.MapControllerRoute(
