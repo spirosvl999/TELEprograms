@@ -6,7 +6,7 @@ This is a MVC university project, named "TELEprograms". In this project, we have
 
 We used C#, ASP.NET and CSS.
 
-## Tools Used:
+## Extensions Used:
 
 
 ## Authors
