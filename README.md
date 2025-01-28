@@ -7,6 +7,7 @@ This is a MVC university project, named "TELEprograms". In this project, we have
 - C#
 - ASP.NET
 - CSS
+- JavaScript
 - SQL
 
 ## Extensions Used:
