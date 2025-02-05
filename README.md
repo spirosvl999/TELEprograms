@@ -25,4 +25,4 @@ This is a MVC university project, named "TELEprograms". In this project, we have
 - [Vlachos Spiridon](https://github.com/spirosvl999)
 
 ## Last Updated
-This project was last updated on [1/29/2025].
+This project was last updated on [2/5/2025].
